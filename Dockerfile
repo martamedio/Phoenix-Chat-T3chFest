@@ -53,4 +53,4 @@ RUN mix local.hex --force && \
   mix local.rebar --force && \
   mix hex.info
 
-WORKDIR /PENDING-WORKDIR
+WORKDIR /chat
