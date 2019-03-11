@@ -2,6 +2,7 @@ defmodule ChatWeb.MyChatChannel do
   use ChatWeb, :channel
 
   def join("my_chat:lobby", payload, socket) do
+    send(self(), :after_join)
     if authorized?(payload) do
       {:ok, socket}
     else
@@ -20,6 +21,15 @@ defmodule ChatWeb.MyChatChannel do
   def handle_in("shout", payload, socket) do
     Chat.Message.changeset(%Chat.Message{}, payload) |> Chat.Repo.insert  
     broadcast socket, "shout", payload
+    {:noreply, socket}
+  end
+
+  def handle_info(:after_join, socket) do
+    Chat.Message.get_messages()
+    |> Enum.each(fn msg -> push(socket, "shout", %{
+        name: msg.name,
+        message: msg.message,
+      }) end)
     {:noreply, socket}
   end
 
