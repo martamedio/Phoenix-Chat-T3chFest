@@ -25,8 +25,7 @@
 
 3. Create the database: `mix ecto.create`
 
-4. Create a channel using Phoenix utility: `mix phx.gen.channel MyChat`, and activate the new channel editing `/lib/channels/user_socket.ex` (see [this commit](https://github.com/martamedio/Phoenix-Chat-T3chFest/commit/a0b79f18aa1ddd433654804f6fe3527c836c913c)):
-```channel "my_chat:lobby", ChatWeb.MyChatChannel```
+4. Create a channel using Phoenix utility: `mix phx.gen.channel MyChat`, and activate the new channel editing `/lib/channels/user_socket.ex` (see [this commit](https://github.com/martamedio/Phoenix-Chat-T3chFest/commit/a0b79f18aa1ddd433654804f6fe3527c836c913c))
 
 5. Build the frontend structure:
 
@@ -47,4 +46,4 @@
 11. Run it, execute: `mix phx.server` and you can visit [http://localhost:4000](http://localhost:4000) to play with the chat, it's recommended open the app in two separate browser windows to try it (if your machine only has one browser try using an "incognito" tab).
 
 12. Test it, execute: `mix test`
-One of the tests will fail, since we changed the code in `/lib/chat_web/templates/page/index.html.eex` (step 8.1). You can fix it update the assertion to something that is on the page, see an example on [this commit](https://github.com/martamedio/Phoenix-Chat-T3chFest/commit/5256be625fcb8bf1bccce8b8e1e151e1a9536665) and re-launch the test execution
+One of the tests will fail, since we changed the code in `/lib/chat_web/templates/page/index.html.eex` (step 8.1). You can fix it update the assertion to something that is on the page, see an example on [this commit](https://github.com/martamedio/Phoenix-Chat-T3chFest/commit/5256be625fcb8bf1bccce8b8e1e151e1a9536665) and re-launch the test execution.

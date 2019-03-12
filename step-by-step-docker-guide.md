@@ -25,26 +25,25 @@
 
 5. Create the database: `docker-compose run web mix ecto.create`
 
-6. Create a channel using Phoenix utility: `mix phx.gen.channel MyChat`, and activate the new channel editing `/lib/channels/user_socket.ex` (see [this commit](https://github.com/martamedio/Phoenix-Chat-T3chFest/commit/a0b79f18aa1ddd433654804f6fe3527c836c913c)):
-```channel "my_chat:lobby", ChatWeb.MyChatChannel```
+6. Create a channel using Phoenix utility: `mix phx.gen.channel MyChat`, and activate the new channel editing `/lib/channels/user_socket.ex` (see [this commit](https://github.com/martamedio/Phoenix-Chat-T3chFest/commit/a0b79f18aa1ddd433654804f6fe3527c836c913c))
 
 7. Build the frontend structure:
 
-    8.1. Remove all content from `/lib/chat_web/templates/page/index.html.eex` and setup a message list and two inputs (for name and message), see this commit
+    8.1. Remove all content from `/lib/chat_web/templates/page/index.html.eex` and setup a message list and two inputs (for name and message), see [this commit](https://github.com/martamedio/Phoenix-Chat-T3chFest/commit/990d9b69c5041aa883565cf265d02adb4fabce5d)
 
-    8.2. Update the javascript client code (`/assets/js/`) to work with the websocket funcionality, see this commit
+    8.2. Update the javascript client code (`/assets/js/`) to work with the websocket funcionality, see [this commit](https://github.com/martamedio/Phoenix-Chat-T3chFest/commit/816b881b788bcfc5c7079566a8a351c3a8e7e40c)
 
-8. Create a database schema to store the chat history: `docker-compose run web mix phx.gen.schema Message messages name:string message:string`
+8. Create a database schema to store the chat history (see [this commit](https://github.com/martamedio/Phoenix-Chat-T3chFest/commit/649e43ee90e6b417541c74c5ce5606ffb41a8a89)): `docker-compose run web mix phx.gen.schema Message messages name:string message:string`
 
 9. Migrate the schema to PostgreSQL: `docker-compose run web mix ecto.migrate`
 
-10. Insert messages into database: each time the shout event is executed, save the received message (see this commit)
+10. Insert messages into database: each time the shout event is executed, save the received message see [this commit](https://github.com/martamedio/Phoenix-Chat-T3chFest/commit/7af932a8e0feec2a0ee9c2486fda4fed99897d8b))
 
-11. Create a function to load existing messages, see this commit
+11. Create a function to load existing messages, see [this commit](https://github.com/martamedio/Phoenix-Chat-T3chFest/commit/f3d64a09acd2329fc562f40ecb957f15acaf9891)
 
-12. Send existing messages to the client (it will print them) when someone joins the chat, see this commit
+12. Send existing messages to the client (it will print them) when someone joins the chat, see [this commit](https://github.com/martamedio/Phoenix-Chat-T3chFest/commit/76de1c60cba280acd0a2a58173384ca6ae1bfc44)
 
 13. Run it, execute: `docker-compose up` and you can visit [http://localhost:4000](http://localhost:4000) to play with the chat, it's recommended open the app in two separate browser windows to try it (if your machine only has one browser try using an "incognito" tab).
 
 14. Test it, execute: `docker-compose run web mix test`
-One of the tests will fail, since we changed the code in `/lib/chat_web/templates/page/index.html.eex` (step 8.1). You can fix it update the assertion to something that is on the page, see this commit and re-launch the test execution
+One of the tests will fail, since we changed the code in `/lib/chat_web/templates/page/index.html.eex` (step 8.1). You can fix it update the assertion to something that is on the page, see an example on [this commit](https://github.com/martamedio/Phoenix-Chat-T3chFest/commit/5256be625fcb8bf1bccce8b8e1e151e1a9536665) and re-launch the test execution.
