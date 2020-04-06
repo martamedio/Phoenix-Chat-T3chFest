@@ -69,7 +69,7 @@ config :phoenix, :plug_init_mode, :runtime
 # Configure your database
 config :chat, Chat.Repo,
   username: "postgres",
-  password: "",
+  password: "postgres",
   database: "chat_dev",
   hostname: "db",
   pool_size: 10

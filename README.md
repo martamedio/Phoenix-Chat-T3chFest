@@ -43,7 +43,7 @@ Open a terminal and check:
 ##### Run it with Docker!
 1. Setup the web container: `docker-compose build web`
 2. Install dependencies: `docker-compose run web mix deps.get`
-3. Create your database: `docker-compose run web mix ecto.create`
+3. Using ecto, create your database: `docker-compose run web mix ecto.create` and migrate your tables `docker-compose run web mix ecto.migrate`
 4. Install Node.js dependencies: `docker-compose run web bash -c "cd assets; npm install"`
 5. Start the application: `docker-compose up`
 
