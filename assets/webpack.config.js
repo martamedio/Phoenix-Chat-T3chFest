@@ -8,7 +8,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = (env, options) => ({
   optimization: {
     minimizer: [
-      new TerserPlugin({ cache: true, parallel: true, sourceMap: false }),
+      new TerserPlugin({ parallel: true }),
       new OptimizeCSSAssetsPlugin({})
     ]
   },
@@ -36,6 +36,12 @@ module.exports = (env, options) => ({
   },
   plugins: [
     new MiniCssExtractPlugin({ filename: '../css/app.css' }),
-    new CopyWebpackPlugin([{ from: 'static/', to: '../' }])
+    new CopyWebpackPlugin(
+      { 
+        patterns: [
+          { from: 'static/', to: '../' }
+        ]
+      }
+    )
   ]
 });
